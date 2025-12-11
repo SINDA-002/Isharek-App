@@ -1,149 +1,64 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>إشعارك — National Early Fraud Alert System</title>
-<style>
-  :root{
-    --primary:#1D8A4B;
-    --muted:#6b6b6b;
-    --card:#ffffff;
-    --bg:#f6faf6;
-  }
-  body{font-family: "Cairo", "Almarai", sans-serif; margin:0; background:var(--bg); color:#222;}
-  header{background:linear-gradient(0deg,#fff,#fff); border-bottom:1px solid #e6efe6;}
-  .top{max-width:1100px;margin:0 auto;padding:20px;display:flex;gap:16px;align-items:center;justify-content:space-between}
-  .brand{display:flex;gap:12px;align-items:center}
-  .logo{width:56px;height:56px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:26px}
-  h1{margin:0;color:var(--primary);font-size:22px}
-  p.lead{margin:8px 0 0;color:var(--muted)}
-
-  main{max-width:1100px;margin:28px auto;padding:0 20px}
-  .hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-  .hero-card{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,0.06);flex:1;min-width:320px}
-  .actions{display:flex;gap:12px;margin-top:12px}
-  .btn{background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;text-decoration:none}
-  .btn.secondary{background:#fff;color:var(--primary);border:1px solid #e6efe6}
-
-  section{margin-top:26px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-  .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
-  .kpi{display:flex;gap:12px;align-items:center}
-
-  footer{max-width:1100px;margin:30px auto;padding:20px;color:#666;font-size:14px}
-
-  /* small */
-  @media(max-width:720px){
-    .top{padding:12px}
-    .logo{width:48px;height:48px;font-size:22px}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمة إشعارك</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f2f4f7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background: #0a6ebd;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px auto;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0002;
+            cursor: pointer;
+        }
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #0a6ebd;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="top">
-    <div class="brand">
-      <div class="logo">!</div>
-      <div>
-        <h1>إشعارك</h1>
-        <p class="lead">نظام وطني للإنذار المبكر ضد الاحتيال — داخل أبشر</p>
-      </div>
-    </div>
+<header>خدمة إشعارك</header>
 
-    <div style="text-align:left">
-      <a class="btn" href="#demo">جرب الآن</a>
-    </div>
-  </div>
-</header>
+<div class="container">
 
-<main>
-  <div class="hero">
-    <div class="hero-card">
-      <h2>المفهوم</h2>
-      <p>إشعارك يجمع جميع الإشعارات الحكومية في واجهة مركزية داخل أبشر، ويقدّم تنبيهات فورية وآمنة للمستخدم مع إمكانية تخصيص الإشعارات وتنبيهات وقائية ضد الاحتيال.</p>
-      <div class="actions">
-        <a class="btn" href="#features">المزايا</a>
-        <a class="btn secondary" href="#impact">الأثر</a>
-      </div>
-    </div>
+    <div class="card">🔔 الإشعارات</div>
+    <div class="card">🛡️ التحقق الأمني</div>
+    <div class="card">🚨 الإبلاغ عن الاحتيال</div>
+    <div class="card">📊 لوحة المتابعة</div>
 
-    <div class="hero-card">
-      <h3>لماذا إشعارك؟</h3>
-      <ul style="padding-left:18px;color:var(--muted);line-height:1.7">
-        <li>تقليل حالات الاحتيال عبر إشعارات فورية.</li>
-        <li>تجربة مستخدم محسّنة داخل أبشر.</li>
-        <li>قناة موحدة لجميع إشعارات الجهات الحكومية.</li>
-        <li>قابلية التكامل مع بنى أبشر وAPIs الحكومية.</li>
-      </ul>
-    </div>
-  </div>
+</div>
 
-  <section id="features">
-    <h2>الوظائف والتقنيات</h2>
-    <div class="grid">
-      <div class="card">
-        <h4>فحص الروابط</h4>
-        <p class="muted">تحقق فوري من الروابط: آمن / مزيف / خطر عالي عبر WHOIS، SSL، وقواعد حجب.</p>
-      </div>
-      <div class="card">
-        <h4>رفع البلاغات</h4>
-        <p class="muted">رفع رسالة، رابط، رقم أو تسجيل صوتي مع توليد رقم مرجعي ومتابعة الحالة.</p>
-      </div>
-      <div class="card">
-        <h4>محرك إشعارات ذكي</h4>
-        <p class="muted">تصنيف وتنبيه حسب الأهمية والموقع والجهة المستهدفة.</p>
-      </div>
-      <div class="card">
-        <h4>تكامل مع أبشر</h4>
-        <p class="muted">إدراج خدمة إشعارك كبطاقة في شبكة خدمات أبشر لزيادة الثقة والوصول.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="impact">
-    <h2>الأثر الاجتماعي والاقتصادي</h2>
-    <div class="grid">
-      <div class="card">
-        <h4>الأثر الاجتماعي</h4>
-        <p>تحسين الأمن الرقمي وزيادة وعي المستخدمين وتقليل الخسائر الناجمة عن الاحتيال.</p>
-      </div>
-      <div class="card">
-        <h4>الأثر الاقتصادي</h4>
-        <p>خفض تكاليف التواصل والعمليات، زيادة كفاءة الخدمات الحكومية واستدامتها الرقمية.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="demo">
-    <h2>تجربة تفاعلية (Demo)</h2>
-    <p>جربي الآن نموذج الفحص ورفع البلاغات (تطبيقي تجريبي).</p>
-    <div class="card">
-      <p>للحصول على تجربة تفاعلية، افتحي تطبيق العرض التفاعلي (Streamlit demo) عبر الرابط التالي:</p>
-      <p><a class="btn" href="https://share.streamlit.io/YOUR_USERNAME/YOUR_REPO/main/app.py" target="_blank">فتح الـ Demo</a></p>
-    </div>
-  </section>
-
-  <section id="testing">
-    <h2>اختبار وتحقيق</h2>
-    <p>اختبار قابلية الاستخدام وسرعة الإشعارات ومحاكاة سيناريوهات متعددة مع ضمان أمان البيانات وسياسات الخصوصية.</p>
-  </section>
-
-  <section id="kpis">
-    <h2>مؤشرات الأداء المقترحة</h2>
-    <div class="grid">
-      <div class="card"><div class="kpi"><div><strong>الفحوصات اليومية</strong></div></div></div>
-      <div class="card"><div class="kpi"><div><strong>نسبة البلاغات المؤكدة</strong></div></div></div>
-      <div class="card"><div class="kpi"><div><strong>سرعة وصول الإشعار</strong></div></div></div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  © إشعارك — مشروع هاكاثون طويق · مصمم لدمج الخدمة داخل أبشر · للمزيد تواصلي.
-</footer>
+<div class="chatbot-btn">💬 مساعدك الذكي</div>
 
 </body>
 </html>
