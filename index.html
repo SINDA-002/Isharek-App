@@ -1,15 +1,124 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>إشعارك</title>
-<link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>أبشر — إشعارك (تجريبي)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header class="site-header"><div class="absher-logo">أبشر</div><div></div><div title="إشعارك" class="isharek-logo"></div></header>
-<main class="container">
-  <h1 class="page-title">إشعارك — نظام الإنذار المبكر ضد الاحتيال</h1>
-  <div class="grid">
-    <div class="card" onclick="location.href='check.html'"><div class="icon">🛡</div><h3>فحص رابط</h3></div>
-    <div class="card" onclick="location.href='report.html'"><div class="icon">📢</div><h3>رفع بلاغ</h3></div>
-    <div class="card" onclick="location.href='architecture.html'"><div class="icon">⚙️</div><h3>المعمارية التقنية</h3></div>
+  <!-- أيقونات SVG -->
+  <div style="display:none"><?xml:namespace prefix = v ns = "urn:schemas-microsoft-com:vml"?> 
+    <!-- تحميل sprite -->
+    <object type="image/svg+xml" data="icons.svg" style="display:none"></object>
   </div>
-</main>
-</body></html>
+
+  <header class="header" role="banner">
+    <div class="brand-left">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='34'><text x='0' y='20' fill='white' font-family='Tahoma' font-size='20'>أبشر</text></svg>" alt="أبشر" class="logo-abshir">
+      <div style="display:flex;flex-direction:column">
+        <div class="title">منصة أبشر – الخدمات الإلكترونية</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.92)">إشعارك — نظام الإنذار المبكر ضد الاحتيال (نسخة تجريبية)</div>
+      </div>
+    </div>
+
+    <div class="header-logos">
+      <!-- أيقونة إشعارك كدرع على اليمين -->
+      <div class="badge-shield" aria-hidden="true">!</div>
+      <div class="access-tools">
+        <button class="btn small" onclick="document.body.classList.toggle('high-contrast')">تباين</button>
+        <button class="btn small" onclick="zoomIn()">تكبير</button>
+        <button class="btn small" onclick="zoomOut()">تصغير</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="services-grid" aria-label="الخدمات">
+      <a class="card" href="check.html" role="link" aria-label="إشعارك — فحص رابط">
+        <div class="icon"><svg width="32" height="32"><use href="#shield"></use></svg></div>
+        <h3>إشعارك — فحص وتحليل روابط</h3>
+        <p style="font-size:13px;color:#666">فحص سريع وتحليل مخاطر الرابط قبل الفتح</p>
+      </a>
+
+      <a class="card" href="javascript:void(0)" role="button" onclick="location.href='report.html'">
+        <div class="icon"><svg width="32" height="32"><use href="#user"></use></svg></div>
+        <h3>رفع بلاغ</h3>
+        <p style="font-size:13px;color:#666">أبلغ عن رسالة أو رقم أو موقع مشبوه</p>
+      </a>
+
+      <div class="card" onclick="alert('واجهة عرض تجريبي — خدمات المرور')">
+        <div class="icon"><svg width="32" height="32"><use href="#car"></use></svg></div>
+        <h3>خدمات المرور</h3>
+      </div>
+
+      <div class="card" onclick="alert('واجهة عرض تجريبي — الجوازات')">
+        <div class="icon"><svg width="32" height="32"><use href="#passport"></use></svg></div>
+        <h3>الجوازات</h3>
+      </div>
+
+      <div class="card" onclick="alert('واجهة عرض تجريبي — الاستعلام')">
+        <div class="icon"><svg width="32" height="32"><use href="#search"></use></svg></div>
+        <h3>الاستعلامات</h3>
+      </div>
+
+      <div class="card" onclick="alert('واجهة عرض تجريبي — المواعيد')">
+        <div class="icon"><svg width="32" height="32"><use href="#calendar"></use></svg></div>
+        <h3>المواعيد</h3>
+      </div>
+
+      <div class="card" onclick="alert('واجهة عرض تجريبي — خدماتي')">
+        <div class="icon"><svg width="32" height="32"><use href="#user"></use></svg></div>
+        <h3>خدماتي</h3>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 إشعارك — نموذج تجريبي قابل للتطوير</footer>
+
+  <button class="chat-launch" aria-label="مساعد إشعارك" onclick="openChat()" title="مساعد إشعارك">💬</button>
+
+  <script src="chatbot.js"></script>
+  <script>
+    // تكبير/تصغير (وضع مبسط)
+    let zoomLevel = 100;
+    function zoomIn(){ zoomLevel+=10; document.documentElement.style.fontSize = zoomLevel+'%'; }
+    function zoomOut(){ zoomLevel=Math.max(80,zoomLevel-10); document.documentElement.style.fontSize = zoomLevel+'%'; }
+
+    // شات بوت منبثق بسيط
+    function openChat(){
+      if(document.getElementById('chatbox')) return;
+      const box = document.createElement('div');
+      box.id='chatbox';
+      box.style= 'position:fixed;left:18px;bottom:18px;width:360px;max-width:94vw;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.
+        2);z-index:9999;padding:12px;';
+      box.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>مساعد إشعارك</strong>
+          <button onclick="closeChat()" aria-label="إغلاق">✕</button>
+        </div>
+        <div id="chatlog" style="height:220px;overflow:auto;padding:8px 4px;margin-top:8px;background:#f8f8f8;border-radius:8px"></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <input id="chatin" aria-label="أدخل سؤالك" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd" placeholder="اطرح سؤالك...">
+          <button id="mic" aria-label="تحدث" style="padding:8px;border-radius:8px;background:var(--green);color:#fff">🎤</button>
+          <button id="send" aria-label="إرسال" style="padding:8px;border-radius:8px;background:var(--dark);color:#fff">إرسال</button>
+        </div>
+      `;
+      document.body.appendChild(box);
+      document.getElementById('send').onclick = sendChat;
+      document.getElementById('chatin').onkeydown = e=>{ if(e.key==='Enter') sendChat(); }
+      document.getElementById('mic').onclick = ()=>{
+        Bot.startRecognition((txt,err)=>{
+          if(err){ addChat('نظام التعرف الصوتي غير متوفر'); return; }
+          if(txt){ document.getElementById('chatin').value = txt; sendChat(); }
+        });
+      };
+      addChat('أهلًا! اكتب: فحص رابط، رفع بلاغ، أو مساعدة.',true);
+    }
+    function closeChat(){ const el=document.getElementById('chatbox'); if(el) el.remove(); Bot.speak(''); }
+    function addChat(msg,bot=false){ const el=document.getElementById('chatlog'); const p=document.createElement('div'); p.style.padding='8px'; p.style.margin='6px 0'; p.style.background=bot?'#e8f6ee':'#fff'; p.style.borderRadius='8px'; p.textContent=msg; el.appendChild(p); el.scrollTop = el.scrollHeight; if(bot) Bot.speak(msg); }
+    function sendChat(){ const v=document.getElementById('chatin').value.trim(); if(!v) return; addChat(v,false); document.getElementById('chatin').value=''; setTimeout(()=>{ const r = Bot.reply(v); addChat(r,true); },300); }
+  </script>
+</body>
+</html>
+        
