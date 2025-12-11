@@ -1,1 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>رفع بلاغ - إشعارك</title>
+  <link rel="stylesheet" href="style.css">
+  <style>.page{max-width:900px;margin:18px auto;padding:18px}.panel{background:#fff;padding:18px;border-radius:12px}</style>
+</head>
+<body>
+  <header class="header"><div class="brand-left"><img class="logo-abshir" src="" alt="أبشر"><div class="title">إشعارك — رفع بلاغ</div></div></header>
 
+  <main class="page">
+    <div class="panel">
+      <h2>رفع بلاغ عن احتيال</h2>
+      <form id="rform">
+        <label>نوع البلاغ
+          <select id="type" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ddd">
+            <option value="sms">رسالة نصية</option>
+            <option value="phone">مكالمة</option>
+            <option value="link">رابط/موقع</option>
+            <option value="other">أخرى</option>
+          </select>
+        </label>
+        <div style="height:10px"></div>
+        <label>التفاصيل
+          <textarea id="desc" rows="4" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-top:6px"></textarea>
+        </label>
+        <div style="height:10px"></div>
+        <label>رابط/رقم (إن وُجد)
+          <input id="target" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-top:6px">
+        </label>
+        <div style="height:12px"></div>
+        <button type="button" onclick="submitReport()" style="background:var(--green);color:#fff;padding:10px 14px;border-radius:8px;border:none">إرسال البلاغ</button>
+      </form>
+      <div id="msg" style="margin-top:12px"></div>
+
+      <hr style="margin:18px 0">
+      <h3>سجل البلاغات (محلي)</h3>
+      <div id="reports"></div>
+    </div>
+  </main>
+
+  <footer class="footer">© إشعارك</footer>
+
+  <script>
+    function uuid(){ return 'xxxx-xxxx'.replace(/[x]/g,c=> (Math.random()*16|0).toString(16)); }
+    function loadReports(){
+      const el=document.getElementById('reports'); el.innerHTML='';
+      const r = JSON.parse(localStorage.getItem('reports')||'[]');
+      if(!r.length) el.innerHTML='<div style="color:#666">لا توجد بلاغات</div>';
+      r.forEach(rep=>{
+        const d = new Date(rep.ts);
+        const node = document.createElement('div'); node.style= 'background:#fff;padding:12px;border-radius:10px;margin-bottom:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04)';
+        node.innerHTML = `<strong>رقم: ${rep.id}</strong> <div style="color:#666">${d.toLocaleString()}</div><div style="margin-top:8px">${rep.type} — ${rep.target||''}</div><div style="margin-top:6px;color:#333">${rep.desc}</div>`;
+        el.appendChild(node);
+      });
+    }
+    function submitReport(){
+      const type=document.getElementById('type').value, desc=document.getElementById('desc').value.trim(), target=document.getElementById('target').value.trim();
+      if(!desc){ document.getElementById('msg').innerHTML='<span style="color:#c00">اكتب تفاصيل البلاغ</span>'; return; }
+      const id = uuid();
+      const rep = {id,type,desc,target,ts:Date.now()};
+      const list = JSON.parse(localStorage.getItem('reports')||'[]'); list.unshift(rep); localStorage.setItem('reports', JSON.stringify(list.slice(0,200)));
+      document.getElementById('msg').innerHTML =      <select id="type" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;bord
+      document.getElementById('rform').reset();
+      loadReports();
+    }
+    loadReports();
+  </script>
+</body>
+</html>
