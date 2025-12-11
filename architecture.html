@@ -1,1 +1,26 @@
-
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>معمارية نظام إشعارك</title><link rel="stylesheet" href="style.css">
+<style>.page{max-width:1100px;margin:20px auto;padding:18px}.panel{background:#fff;padding:18px;border-radius:12px}</style>
+</head>
+<body>
+<header class="header"><div class="brand-left"><img class="logo-abshir" src="" alt="أبشر"><div class="title">معمارية نظام إشعارك</div></div></header>
+<main class="page">
+  <div class="panel">
+    <h2>تصور معماري (مبسّط)</h2>
+    <p>هذا النموذج تفاعلي واجهة أمامية. للتكامل الحقيقي مع محركات التعلم الآلي والمنصات (مثل Allam، Triton، Milvus) تحتاجون نقطة نهاية (API) على خادم (مثلاً Python/Flask أو Node.js) مزود بــ GPU، ومخزن بيانات مُؤمّن.</p>
+    <ol>
+      <li><strong>الواجهة (Front-end)</strong> — صفحات HTML/CSS/JS (موجودة هنا).</li>
+      <li><strong>API Gateway</strong> — نقطة استقبال البلاغات وفحص الروابط.</li>
+      <li><strong>محرك الفحص</strong> — Allam/Triton لتشغيل نماذج الكشف، Milvus لقاعدة المعرفات (embeddings) إن لزم.</li>
+      <li><strong>قاعدة بيانات احتياطية</strong> — PostgreSQL / MongoDB لسجلات البلاغات.</li>
+      <li><strong>إشعارات</strong> — بوابات SMS والبريد والدفع داخل أبشر.</li>
+    </ol>
+    <p>للعرض التجريبي: الواجهة هنا تحاكي سلوك الفحص والبلاغات بدون باك-إند. عند الانتقال للإنتاج نوصي بنشر نموذج Allam على Triton Server مع قاعدة Milvus للبحث التشابهي، واستخدام بنية GPU Node.</p>
+    <div style="margin-top:12px"><a href="index.html">العودة للواجهة</a></div>
+  </div>
+</main>
+<footer class="footer">© إشعارك — مخطط معماري</footer>
+</body>
+</html>
