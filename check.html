@@ -1,1 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>فحص رابط - إشعارك</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page{max-width:900px;margin:18px auto;padding:18px}
+    .panel{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+    .analysis{margin-top:12px}
+    .result-safe{color:green;font-weight:700}
+    .result-risk{color:#d9534f;font-weight:700}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="brand-left"><img class="logo-abshir" src="" alt="أبشر"><div class="title">إشعارك — فحص رابط</div></div></header>
 
+  <main class="page">
+    <div class="panel">
+      <h2>فحص رابط مشبوه</h2>
+      <p>ألصق الرابط هنا لنقوم بتحليله محليًا (تجريبي):</p>
+      <div style="display:flex;gap:8px">
+        <input id="url" placeholder="https://example.com/xyz" style="flex:1;padding:10px;border-radius:8px;border:1px solid #ddd">
+        <button onclick="doCheck()" style="background:var(--green);color:#fff;border:none;padding:10px 14px;border-radius:8px">فحص الرابط</button>
+      </div>
+      <div class="analysis" id="analysis"></div>
+    </div>
+  </main>
+
+  <footer class="footer">© إشعارك — نموذج فحص تجريبي</footer>
+
+  <script>
+    function isIP(host){ return /^(\d{1,3}\.){3}\d{1,3}$/.test(host); }
+    function domainFromUrl(u){ try{ const url=new URL(u); return url.hostname; }catch(e){ return null; } }
+    function suspiciousTld(host){ return /\.(zip|review|party|xyz|top|loan|men|ru|cn)(:|$)/i.test(host); }
+    function similarityToOfficial(host){ const official=['absher.sa','moi.gov.sa']; return official.some(o=> host.includes(o)); }
+
+    function doCheck(){
+      const out = document.getElementById('analysis'); out.innerHTML='';
+      const u = document.getElementById('url').value.trim();
+      if(!u){ out.innerHTML='<div style="color:#c00">أدخل رابطًا صالحًا</div>'; return; }
+      const host = domainFromUrl(u);
+      if(!host){ out.innerHTML='<div style="color:#c00">الرابط غير صالح</div>'; return; }
+
+      // قواعد مبسطة
+      const issues = [];
+      if(u.length>200) issues.push('الرابط طويل جدًا — قد يكون إخفاء توجيه.');
+      if(u.includes('@')) issues.push('يحتوي على @ — قد يحاول إخفاء اسم المستخدم.');
+      if(u.includes('%')) issues.push('وجود رموز ترميز مشبوهة.');
+      if(isIP(host)) issues.push('النطاق رقم IP — مواقع بنطاقات IP قد تكون مشبوهة.');
+      if(suspiciousTld(host)) issues.push('امتداد نطاق غير مألوف — احذر.');
+      if(host.includes('paypal') && !similarityToOfficial(host)) issues.push('يحتوي على اسم خدمة مالية لكن النطاق غير رسمي.');
+
+      // heuristic score
+      const score = Math.max(0, 100 - issues.length*30 - (u.length>150?20:0));
+      const safe = score>50;
+
+      out.innerHTML += `<div style="padding:12px;background:#f3f9f4;border-radius:8px">النطاق: <strong>${host}</strong></div>`;
+      out.innerHTML +=ang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>فحص رابط - إشعارك</title>
+  <link r
+      if(issues.length){
+        out.innerHTML += '<ul style="margin-top:10px;padding-left:18px;color:#444">';
+        issues.forEach(i=> out.innerHTML += `<li>${i}</li>`);
+        out.innerHTML += '</ul>';
+      } else {
+        out.innerHTML += '<div style="margin-top:10px;color:green">لا توجد علامات تحذير سريعة.</div>';
+      }
+
+      // حفظ سجل فحص محليًا
+      const logs = JSON.parse(localStorage.getItem('check-logs'||'[]'));
+      logs.unshift({url:u,host,score,ts:Date.now()});
+      localStorage.setItem('check-logs', JSON.stringify(logs.slice(0,50)));
+    }
+  </script>
+</body>
+</html>
