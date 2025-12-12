@@ -1,86 +1,42 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>فحص رابط — إشعارك</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>فحص رابط — إشعارك</title><link rel="stylesheet" href="style.css"></head>
 <body>
-  <header class="site-header" style="justify-content:space-between">
-    <div style="display:flex;align-items:center;gap:10px">
-      <a href="index.html" class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,0.28)">العودة</a>
-    </div>
-    <div class="brand-text" style="color:#fff">فحص رابط — إشعارك</div>
-    <div></div>
-  </header>
+  <header class="topbar"><div class="topbar-left"><div class="absher-mark"><span></span><span></span><span></span></div><div class="site-name">فحص رابط</div></div><div class="topbar-right"></div></header>
 
-  <main class="content" style="max-width:700px">
-    <section class="hero">
-      <div style="width:100%">
-        <h2>فحص رابط سريع</h2>
-        <p class="muted">أدخل الرابط وسيقوم النظام بمسح أولي عن علامات احتيال (محاكاة)</p>
-
-        <div style="margin-top:14px;background:#fff;padding:14px;border-radius:12px;box-shadow:var(--shadow)">
-          <label for="url" class="muted">أدخل رابطاً</label>
-          <input id="url" type="url" placeholder="https://example.com/..." aria-label="حقل رابط للفحص">
-          <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
-            <button id="scanBtn" class="btn primary">فحص الرابط</button>
-            <button id="reset" class="btn ghost">مسح</button>
-          </div>
-
-          <div id="result" style="margin-top:14px;display:none;padding:12px;border-radius:10px"></div>
-        </div>
+  <main class="page" style="max-width:900px;margin-top:20px">
+    <div class="card">
+      <label class="muted">ألصق الرابط للتحقق</label>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <input id="scanUrl" placeholder="https://example.com/..." style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
+        <button id="doScan" class="btn primary">فحص</button>
       </div>
-    </section>
+      <div id="scanResult" style="margin-top:14px;display:none;padding:12px;border-radius:10px"></div>
+    </div>
   </main>
 
 <script>
-  (function(){
-    const scanBtn = document.getElementById('scanBtn');
-    const urlInput = document.getElementById('url');
-    const result = document.getElementById('result');
-    const reset = document.getElementById('reset');
-
-    function render(state, details){
-      result.style.display = 'block';
-      if(state === 'safe'){
-        result.style.background = '#ecffef';
-        result.style.border = '2px solid #baf0c9';
-        result.innerHTML = '<strong style="color:#0b7a4b">آمن</strong><div class="muted">'+details+'</div>';
-      } else if(state === 'suspicious'){
-        result.style.background = '#fff8e6';
-        result.style.border = '2px solid #ffea8a';
-        result.innerHTML = '<strong style="color:#d68b00">مشتبه</strong><div class="muted">'+details+'</div>';
-      } else {
-        result.style.background = '#fff0f0';
-        result.style.border = '2px solid #ffb2b2';
-        result.innerHTML = '<strong style="color:#c62828">خطر</strong><div class="muted">'+details+'</div>';
-      }
-    }
-
-    scanBtn.addEventListener('click', ()=>{
-      const u = (urlInput.value || '').trim();
-      if(!u){ alert('أدخل رابطاً للتجربة'); return; }
-      const lower = u.toLowerCase();
-
-      // محاكاة الفحص — قواعد بسيطة للعرض أمام اللجنة
-      setTimeout(()=>{
-        if(lower.includes('login') || lower.includes('verify') || lower.includes('bank') || lower.includes('confirm')){
-          render('danger','يحتوي الرابط على كلمات وبنية شائعة في عمليات الاحتيال.');
-        } else if(lower.includes('.tk') || lower.includes('.pw') || lower.length < 12){
-          render('suspicious','نطاق غير مألوف أو طول قصير — ثبّته قبل الفتح.');
-        } else {
-          render('safe','لم تُكشف دلائل واضحة في الفحص السريع. هذا فحص مبدئي فقط.');
-        }
-      }, 700);
-    });
-
-    reset.addEventListener('click', ()=>{
-      urlInput.value = '';
-      result.style.display = 'none';
-    });
-  })();
+document.getElementById('doScan').addEventListener('click', async ()=>{
+  const url = document.getElementById('scanUrl').value.trim();
+  const out = document.getElementById('scanResult');
+  if(!url){ alert('أدخل رابطًا'); return; }
+  out.style.display='block'; out.textContent='جاري التحليل...';
+  // heuristics (client-side)
+  function score(u){
+    let s=0; const l=u.toLowerCase();
+    if(l.includes('login')||l.includes('secure')||l.includes('verify')) s+=30;
+    if(l.includes('bit.ly')||l.includes('tinyurl')) s+=20;
+    if(l.match(/\.(tk|pw|cn|ru)$/)) s+=25;
+    if(l.match(/\.(exe|zip|msi|scr)$/)) s+=40;
+    return s;
+  }
+  const s = score(url);
+  setTimeout(()=>{
+    if(s>=50) { out.style.background='#fff0f0'; out.style.border='1px solid #f5c2c2'; out.innerHTML='<strong style="color:#b00020">خطر عالي</strong><div class="muted">تدل المؤشرات على وجود نمط احتيالي محتمل.</div>'; }
+    else if(s>=20){ out.style.background='#fffaf0'; out.style.border='1px solid #f3e3b3'; out.innerHTML='<strong style="color:#9a6a00">مشتبه</strong><div class="muted">يُنصح بالحذر وعدم فتح الرابط مباشرة.</div>'; }
+    else { out.style.background='#eef9f1'; out.style.border='1px solid #cfeed6'; out.innerHTML='<strong style="color:#0f6848">آمن (فحص مبدئي)</strong><div class="muted">لا دلائل واضحة في الفحص السريع. هذا فحص مبدئي فقط.</div>'; }
+  },700);
+});
 </script>
 </body>
 </html>
