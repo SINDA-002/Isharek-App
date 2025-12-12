@@ -1,124 +1,85 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>أبشر — إشعارك (تجريبي)</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>أبشر — إشعارك (محاكاة)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- أيقونات SVG -->
-  <div style="display:none"><?xml:namespace prefix = v ns = "urn:schemas-microsoft-com:vml"?> 
-    <!-- تحميل sprite -->
-    <object type="image/svg+xml" data="icons.svg" style="display:none"></object>
+  <div class="site-shell">
+    <aside class="sidebar" role="navigation" aria-label="القائمة الرئيسية">
+      <div class="brand">
+        <div class="logo">أبشر</div>
+        <div class="title">منصة الخدمات</div>
+      </div>
+
+      <nav class="nav" aria-label="روابط">
+        <a class="active" href="index.html">الرئيسية</a>
+        <a href="ishaarak.html">إشعارك (الخدمة)</a>
+        <a href="check-link.html">فحص رابط</a>
+        <a href="report.html">رفع بلاغ</a>
+        <a href="architecture.html">المعمارية</a>
+      </nav>
+
+      <div style="margin-top:auto;font-size:13px;color:rgba(255,255,255,0.9)">فريق الابتكار والتطوير</div>
+    </aside>
+
+    <main class="main" role="main">
+      <header class="header">
+        <div class="title">مرحبًا بك في أبشر — محاكاة الخدمات</div>
+        <div class="tools">
+          <button id="btn-contrast" class="tool">تباين</button>
+          <button id="btn-zoom" class="tool" id="btn-zoom">تكبير</button>
+          <button id="btn-reset" class="tool">إعادة</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="shield" aria-hidden="true">
+          <svg viewBox="0 0 100 120" width="96" height="110"><path d="M50 5 L80 20 L80 60 C80 90 50 110 50 110 C50 110 20 90 20 60 L20 20 Z" fill="url(#g)"></path></svg>
+        </div>
+        <div class="h-text">
+          <h1>منصة أبشر — الخدمات الإلكترونية</h1>
+          <p class="lead">اضغطي على خدمة "إشعارك" لاختبار نظام الإنذار المبكر ضد الاحتيال.</p>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="الخدمات">
+        <div class="card" onclick="location.href='ishaarak.html'">
+          <div class="icon"><svg width="38" height="38"><use href="#ic-shield"></use></svg></div>
+          <h3>إشعارك</h3>
+          <p>نظام الإنذار المبكر ضد الاحتيال</p>
+        </div>
+
+        <div class="card" onclick="location.href='check-link.html'">
+          <div class="icon"><svg width="38" height="38"><use href="#icon-check"></use></svg></div>
+          <h3>خدمات المرور</h3>
+          <p>عرض خدمات المرور (عرض تجريبي)</p>
+        </div>
+
+        <div class="card" onclick="location.href='report.html'">
+          <div class="icon"><svg width="38" height="38"><use href="#icon-report"></use></svg></div>
+          <h3>رفع بلاغ</h3>
+          <p>أبلغ عن رابط أو رسالة مشبوهة</p>
+        </div>
+      </section>
+
+      <div class="box">
+        <h3>ملاحظة هامة</h3>
+        <p class="muted">هذه نسخة عرضية (PoC). الفحص المباشر من المتصفح قد يتأثر بقيود أمان (CORS). لنتائج آمنة يجب ربط واجهة خادم.</p>
+      </div>
+
+    </main>
   </div>
 
-  <header class="header" role="banner">
-    <div class="brand-left">
-      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='34'><text x='0' y='20' fill='white' font-family='Tahoma' font-size='20'>أبشر</text></svg>" alt="أبشر" class="logo-abshir">
-      <div style="display:flex;flex-direction:column">
-        <div class="title">منصة أبشر – الخدمات الإلكترونية</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.92)">إشعارك — نظام الإنذار المبكر ضد الاحتيال (نسخة تجريبية)</div>
-      </div>
-    </div>
+  <!-- chat -->
+  <button class="chat-launch" title="مساعد إشعارك">💬</button>
+  <div class="chat-panel" aria-hidden="true">
+    <div class="chat-header"><strong>مساعد إشعارك</strong><button id="chat-close">✕</button></div>
+    <div class="chat-log" id="chat-log"></div>
+    <form id="chat-form" class="chat-form"><input id="chat-input" placeholder="ألصق الرابط أو اكتب سؤالك..." /><div style="display:flex;gap:8px"><button type="submit">إرسال</button></div></form>
+  </div>
 
-    <div class="header-logos">
-      <!-- أيقونة إشعارك كدرع على اليمين -->
-      <div class="badge-shield" aria-hidden="true">!</div>
-      <div class="access-tools">
-        <button class="btn small" onclick="document.body.classList.toggle('high-contrast')">تباين</button>
-        <button class="btn small" onclick="zoomIn()">تكبير</button>
-        <button class="btn small" onclick="zoomOut()">تصغير</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="services-grid" aria-label="الخدمات">
-      <a class="card" href="check.html" role="link" aria-label="إشعارك — فحص رابط">
-        <div class="icon"><svg width="32" height="32"><use href="#shield"></use></svg></div>
-        <h3>إشعارك — فحص وتحليل روابط</h3>
-        <p style="font-size:13px;color:#666">فحص سريع وتحليل مخاطر الرابط قبل الفتح</p>
-      </a>
-
-      <a class="card" href="javascript:void(0)" role="button" onclick="location.href='report.html'">
-        <div class="icon"><svg width="32" height="32"><use href="#user"></use></svg></div>
-        <h3>رفع بلاغ</h3>
-        <p style="font-size:13px;color:#666">أبلغ عن رسالة أو رقم أو موقع مشبوه</p>
-      </a>
-
-      <div class="card" onclick="alert('واجهة عرض تجريبي — خدمات المرور')">
-        <div class="icon"><svg width="32" height="32"><use href="#car"></use></svg></div>
-        <h3>خدمات المرور</h3>
-      </div>
-
-      <div class="card" onclick="alert('واجهة عرض تجريبي — الجوازات')">
-        <div class="icon"><svg width="32" height="32"><use href="#passport"></use></svg></div>
-        <h3>الجوازات</h3>
-      </div>
-
-      <div class="card" onclick="alert('واجهة عرض تجريبي — الاستعلام')">
-        <div class="icon"><svg width="32" height="32"><use href="#search"></use></svg></div>
-        <h3>الاستعلامات</h3>
-      </div>
-
-      <div class="card" onclick="alert('واجهة عرض تجريبي — المواعيد')">
-        <div class="icon"><svg width="32" height="32"><use href="#calendar"></use></svg></div>
-        <h3>المواعيد</h3>
-      </div>
-
-      <div class="card" onclick="alert('واجهة عرض تجريبي — خدماتي')">
-        <div class="icon"><svg width="32" height="32"><use href="#user"></use></svg></div>
-        <h3>خدماتي</h3>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">© 2025 إشعارك — نموذج تجريبي قابل للتطوير</footer>
-
-  <button class="chat-launch" aria-label="مساعد إشعارك" onclick="openChat()" title="مساعد إشعارك">💬</button>
-
-  <script src="chatbot.js"></script>
-  <script>
-    // تكبير/تصغير (وضع مبسط)
-    let zoomLevel = 100;
-    function zoomIn(){ zoomLevel+=10; document.documentElement.style.fontSize = zoomLevel+'%'; }
-    function zoomOut(){ zoomLevel=Math.max(80,zoomLevel-10); document.documentElement.style.fontSize = zoomLevel+'%'; }
-
-    // شات بوت منبثق بسيط
-    function openChat(){
-      if(document.getElementById('chatbox')) return;
-      const box = document.createElement('div');
-      box.id='chatbox';
-      box.style= 'position:fixed;left:18px;bottom:18px;width:360px;max-width:94vw;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.
-        2);z-index:9999;padding:12px;';
-      box.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <strong>مساعد إشعارك</strong>
-          <button onclick="closeChat()" aria-label="إغلاق">✕</button>
-        </div>
-        <div id="chatlog" style="height:220px;overflow:auto;padding:8px 4px;margin-top:8px;background:#f8f8f8;border-radius:8px"></div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <input id="chatin" aria-label="أدخل سؤالك" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd" placeholder="اطرح سؤالك...">
-          <button id="mic" aria-label="تحدث" style="padding:8px;border-radius:8px;background:var(--green);color:#fff">🎤</button>
-          <button id="send" aria-label="إرسال" style="padding:8px;border-radius:8px;background:var(--dark);color:#fff">إرسال</button>
-        </div>
-      `;
-      document.body.appendChild(box);
-      document.getElementById('send').onclick = sendChat;
-      document.getElementById('chatin').onkeydown = e=>{ if(e.key==='Enter') sendChat(); }
-      document.getElementById('mic').onclick = ()=>{
-        Bot.startRecognition((txt,err)=>{
-          if(err){ addChat('نظام التعرف الصوتي غير متوفر'); return; }
-          if(txt){ document.getElementById('chatin').value = txt; sendChat(); }
-        });
-      };
-      addChat('أهلًا! اكتب: فحص رابط، رفع بلاغ، أو مساعدة.',true);
-    }
-    function closeChat(){ const el=document.getElementById('chatbox'); if(el) el.remove(); Bot.speak(''); }
-    function addChat(msg,bot=false){ const el=document.getElementById('chatlog'); const p=document.createElement('div'); p.style.padding='8px'; p.style.margin='6px 0'; p.style.background=bot?'#e8f6ee':'#fff'; p.style.borderRadius='8px'; p.textContent=msg; el.appendChild(p); el.scrollTop = el.scrollHeight; if(bot) Bot.speak(msg); }
-    function sendChat(){ const v=document.getElementById('chatin').value.trim(); if(!v) return; addChat(v,false); document.getElementById('chatin').value=''; setTimeout(()=>{ const r = Bot.reply(v); addChat(r,true); },300); }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
-        
