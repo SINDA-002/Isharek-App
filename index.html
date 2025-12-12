@@ -1,93 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>أبشر — إشعارك (محاكاة)</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إشعارك</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- HEADER مشابه لأبشر -->
-  <header class="topbar" role="banner">
-    <div class="topbar-left">
-      <!-- شعار أبشر-ستايل (رسومي وليس شعار رسمي) -->
-      <div class="absher-mark" aria-hidden="true">
-        <div class="absher-bars"><span></span><span></span><span></span></div>
-      </div>
-      <div class="site-name">منصة الخدمات الإلكترونية</div>
-    </div>
 
-    <div class="topbar-right">
-      <!-- شعار إشعارك (درع أخضر بعلامة تنبيه) -->
-      <div class="ishaarek-logo" aria-label="إشعارك">
-        <svg viewBox="0 0 100 120" width="46" height="56" role="img" aria-hidden="false">
-          <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2e8a4c"/><stop offset="1" stop-color="#0f6848"/></linearGradient></defs>
-          <path d="M50 5 L85 22 L85 68 C85 95 62 113 50 118 C38 113 15 95 15 68 L15 22 Z" fill="url(#g)"/>
-          <circle cx="50" cy="48" r="9" fill="#fff"></circle>
-          <text x="50" y="53" font-size="14" text-anchor="middle" fill="#0f6848" font-weight="700">!</text>
-        </svg>
-      </div>
-      <div class="service-title">إشعارك</div>
-    </div>
-  </header>
+    <!-- الهيدر الأخضر -->
+    <header class="header">
+        <div class="menu-icon">☰</div>
+        <div class="logo">
+            <img src="shield.png" class="shield"> إشعارك
+        </div>
+        <div class="profile-icon">👤</div>
+    </header>
 
-  <!-- MAIN -->
-  <main class="page">
-    <section class="hero">
-      <div class="hero-left">
-        <h1>إشعارك — نظام الإنذار المبكر</h1>
-        <p class="muted">نموذج تفاعلي داخل بيئة شبيهة بأبشر لفحص الروابط ورفع البلاغات وتنبيهات الحماية.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="ishaarak.html">افتح خدمة إشعارك</a>
-          <a class="btn ghost" href="report.html">رفع بلاغ</a>
+    <!-- المحتوى الرئيسي -->
+    <section class="main">
+        <h2 class="title">إشعارك — نظام الإنذار المبكر ضد الاحتيال</h2>
+        <p class="subtitle">
+            خدمة تساعدك على التحقق من الروابط والرسائل المشبوهة وإصدار تنبيهات قبل وقوع الاحتيال.
+        </p>
+
+        <!-- المربعات -->
+        <div class="grid">
+
+            <div class="box">
+                <div class="icon">⚠️</div>
+                <p>رفع بلاغ</p>
+            </div>
+
+            <div class="box">
+                <div class="icon">✔️</div>
+                <p>فحص رابط</p>
+            </div>
+
+            <div class="box">
+                <div class="icon">🤖</div>
+                <p>التحليل الذكي</p>
+            </div>
+
+            <div class="box">
+                <div class="icon">🔔</div>
+                <p>تنبيهات الاحتيال</p>
+            </div>
+
+            <div class="box">
+                <div class="icon">📄</div>
+                <p>سجل البلاغات</p>
+            </div>
+
+            <div class="box">
+                <div class="icon">⚙️</div>
+                <p>إدارة الإشعارات</p>
+            </div>
+
         </div>
-      </div>
-      <div class="hero-right">
-        <div class="card highlight">
-          <h3>تنبيه أمني</h3>
-          <p>تم رصد نشاط احتيالي قد يؤثر على حسابات المستخدمين — جرّب فحص رابط الآن.</p>
-          <a class="btn small" href="check.html">فحص رابط</a>
-        </div>
-      </div>
     </section>
 
-    <section class="services-grid" aria-label="خدمات">
-      <a class="service" href="ishaarak.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-shield"></use></svg>
-        <div>إشعارك</div>
-      </a>
-
-      <a class="service" href="check.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-check"></use></svg>
-        <div>فحص رابط</div>
-      </a>
-
-      <a class="service" href="report.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-report"></use></svg>
-        <div>رفع بلاغ</div>
-      </a>
-
-      <a class="service" href="ishaarak.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-text"></use></svg>
-        <div>تحليل نصي</div>
-      </a>
-
-      <a class="service" href="ishaarak.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-log"></use></svg>
-        <div>سجل البلاغات</div>
-      </a>
-
-      <a class="service" href="ishaarak.html">
-        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#icon-calendar"></use></svg>
-        <div>المواعيد</div>
-      </a>
-    </section>
-
-    <footer class="footer">
-      <div>فريق الابتكار والتطوير — نموذج تجريبي</div>
-    </footer>
-  </main>
-
-  <script src="app.js"></script>
 </body>
 </html>
