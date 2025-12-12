@@ -34,12 +34,12 @@ function checkLink(url) {
 }/* ============================
      فحص الرابط
 =============================*/
-et linkCheck = checkLink(url);
-if (!linkCheck.valid) {
-  result.innerHTML = linkCheck.message;
-  result.style.color = "red";
-  return;
-}
+// et linkCheck = checkLink(url);
+// if (!linkCheck.valid) {
+//   result.innerHTML = linkCheck.message;
+//   result.style.color = "red";
+//   return;
+// }
 
 let suspiciousWords = ["bank", "login", "free", "gift", "verify", "code"];
 let isSuspicious = suspiciousWords.some(w => url.toLowerCase().includes(w));
