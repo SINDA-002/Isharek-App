@@ -1,42 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>فحص رابط — إشعارك</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فحص رابط | إشعارك</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-  <header class="topbar"><div class="topbar-left"><div class="absher-mark"><span></span><span></span><span></span></div><div class="site-name">فحص رابط</div></div><div class="topbar-right"></div></header>
 
-  <main class="page" style="max-width:900px;margin-top:20px">
-    <div class="card">
-      <label class="muted">ألصق الرابط للتحقق</label>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <input id="scanUrl" placeholder="https://example.com/..." style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
-        <button id="doScan" class="btn primary">فحص</button>
-      </div>
-      <div id="scanResult" style="margin-top:14px;display:none;padding:12px;border-radius:10px"></div>
+<header class="header">
+    <div class="menu-icon">☰</div>
+    <div class="logo"><img src="shield.png" class="shield"> إشعارك</div>
+    <div class="profile-icon">👤</div>
+</header>
+
+<section class="main">
+
+    <h2 class="title">فحص رابط</h2>
+    <p class="subtitle">أدخل أي رابط ليتم تحليله بواسطة الذكاء الاصطناعي</p>
+
+    <div class="input-card">
+        <input type="text" placeholder="أدخل الرابط هنا…" class="input">
+        <button class="btn">فحص</button>
     </div>
-  </main>
 
-<script>
-document.getElementById('doScan').addEventListener('click', async ()=>{
-  const url = document.getElementById('scanUrl').value.trim();
-  const out = document.getElementById('scanResult');
-  if(!url){ alert('أدخل رابطًا'); return; }
-  out.style.display='block'; out.textContent='جاري التحليل...';
-  // heuristics (client-side)
-  function score(u){
-    let s=0; const l=u.toLowerCase();
-    if(l.includes('login')||l.includes('secure')||l.includes('verify')) s+=30;
-    if(l.includes('bit.ly')||l.includes('tinyurl')) s+=20;
-    if(l.match(/\.(tk|pw|cn|ru)$/)) s+=25;
-    if(l.match(/\.(exe|zip|msi|scr)$/)) s+=40;
-    return s;
-  }
-  const s = score(url);
-  setTimeout(()=>{
-    if(s>=50) { out.style.background='#fff0f0'; out.style.border='1px solid #f5c2c2'; out.innerHTML='<strong style="color:#b00020">خطر عالي</strong><div class="muted">تدل المؤشرات على وجود نمط احتيالي محتمل.</div>'; }
-    else if(s>=20){ out.style.background='#fffaf0'; out.style.border='1px solid #f3e3b3'; out.innerHTML='<strong style="color:#9a6a00">مشتبه</strong><div class="muted">يُنصح بالحذر وعدم فتح الرابط مباشرة.</div>'; }
-    else { out.style.background='#eef9f1'; out.style.border='1px solid #cfeed6'; out.innerHTML='<strong style="color:#0f6848">آمن (فحص مبدئي)</strong><div class="muted">لا دلائل واضحة في الفحص السريع. هذا فحص مبدئي فقط.</div>'; }
-  },700);
-});
-</script>
+    <br><br>
+    <a href="index.html" class="btn">العودة إلى إشعارك</a>
+
+</section>
+
 </body>
 </html>
