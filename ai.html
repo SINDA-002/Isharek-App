@@ -2,32 +2,26 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التحليل الذكي | إشعارك</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="header">
-    <div class="menu-icon">☰</div>
-    <div class="logo"><img src="shield.png" class="shield"> إشعارك</div>
-    <div class="profile-icon">👤</div>
+    <div class="menu-icon" onclick="go('index.html')">←</div>
+    <div class="logo"><img src="icons/shield.svg" class="shield"> التحليل الذكي</div>
+    <div></div>
 </header>
 
-<section class="main">
+<div class="card">
+    <label>أدخل الرسالة لتحليلها:</label>
+    <textarea id="aiText" class="textarea"></textarea>
 
-    <h2 class="title">التحليل الذكي</h2>
-    <p class="subtitle">حلّل الرسائل المشبوهة واكتشف أنماط الاحتيال فورًا</p>
+    <button class="btn" onclick="analyzeText()">تحليل</button>
 
-    <textarea class="input textarea" placeholder="ألصق النص أو الرسالة هنا…"></textarea>
+    <p id="aiResult" style="margin-top:20px; font-size:18px;"></p>
+</div>
 
-    <button class="btn">تحليل</button>
-
-    <br><br>
-    <a href="index.html" class="btn">العودة إلى إشعارك</a>
-
-</section>
-
+<script src="app.js"></script>
 </body>
 </html>
