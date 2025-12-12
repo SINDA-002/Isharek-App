@@ -2,39 +2,27 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفع بلاغ | إشعارك</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="header">
-    <div class="menu-icon">☰</div>
-    <div class="logo"><img src="shield.png" class="shield"> إشعارك</div>
-    <div class="profile-icon">👤</div>
+    <div class="menu-icon" onclick="go('index.html')">←</div>
+    <div class="logo"><img src="icons/shield.svg" class="shield"> رفع بلاغ</div>
+    <div></div>
 </header>
 
-<section class="main">
+<div class="card">
+    <label>رقم / رابط / رسالة مشبوهة:</label>
+    <input id="number" class="input">
 
-    <h2 class="title">رفع بلاغ احتيال</h2>
-    <p class="subtitle">اختر نوع الاحتيال لتظهر لك الحقول المناسبة تلقائيًا</p>
+    <label>تفاصيل إضافية:</label>
+    <textarea id="details" class="textarea"></textarea>
 
-    <div class="grid">
+    <button class="btn" onclick="saveReport()">إرسال البلاغ</button>
+</div>
 
-        <div class="box"><div class="icon">✉️</div><p>رسالة نصية مشبوهة</p></div>
-        <div class="box"><div class="icon">📞</div><p>مكالمة تهديد</p></div>
-        <div class="box"><div class="icon">🔗</div><p>رابط أو موقع مريب</p></div>
-        <div class="box"><div class="icon">📱</div><p>رقم هاتف مشبوه</p></div>
-        <div class="box"><div class="icon">💳</div><p>طلب بيانات أو تحويل</p></div>
-        <div class="box"><div class="icon">🧑‍💼</div><p>حساب ينتحل جهة حكومية</p></div>
-
-    </div>
-
-    <br><br>
-    <a href="index.html" class="btn">العودة إلى إشعارك</a>
-
-</section>
-
+<script src="app.js"></script>
 </body>
 </html>
