@@ -1,49 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>رفع بلاغ — إشعارك</title><link rel="stylesheet" href="style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع بلاغ | إشعارك</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-  <header class="topbar"><div class="topbar-left"><div class="absher-mark"><span></span><span></span><span></span></div><div class="site-name">رفع بلاغ</div></div><div class="topbar-right"></div></header>
 
-  <main class="page" style="max-width:900px;margin-top:20px">
-    <div class="card">
-      <label class="muted">نوع البلاغ</label>
-      <select id="rtype" style="width:100%;padding:10px;border-radius:8px;margin-top:6px">
-        <option>رابط/موقع مشبوه</option>
-        <option>رسالة نصية</option>
-        <option>مكالمة</option>
-        <option>سرقة حساب</option>
-      </select>
-      <label class="muted" style="margin-top:8px;display:block">تفاصيل</label>
-      <textarea id="rdetail" rows="5" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee"></textarea>
-      <div style="margin-top:10px"><button id="sendReport" class="btn primary">إرسال البلاغ</button></div>
+<header class="header">
+    <div class="menu-icon">☰</div>
+    <div class="logo"><img src="shield.png" class="shield"> إشعارك</div>
+    <div class="profile-icon">👤</div>
+</header>
+
+<section class="main">
+
+    <h2 class="title">رفع بلاغ احتيال</h2>
+    <p class="subtitle">اختر نوع الاحتيال لتظهر لك الحقول المناسبة تلقائيًا</p>
+
+    <div class="grid">
+
+        <div class="box"><div class="icon">✉️</div><p>رسالة نصية مشبوهة</p></div>
+        <div class="box"><div class="icon">📞</div><p>مكالمة تهديد</p></div>
+        <div class="box"><div class="icon">🔗</div><p>رابط أو موقع مريب</p></div>
+        <div class="box"><div class="icon">📱</div><p>رقم هاتف مشبوه</p></div>
+        <div class="box"><div class="icon">💳</div><p>طلب بيانات أو تحويل</p></div>
+        <div class="box"><div class="icon">🧑‍💼</div><p>حساب ينتحل جهة حكومية</p></div>
+
     </div>
 
-    <div class="card" style="margin-top:14px">
-      <h3>سجل البلاغات</h3>
-      <div id="reportsList"></div>
-    </div>
-  </main>
+    <br><br>
+    <a href="index.html" class="btn">العودة إلى إشعارك</a>
 
-<script>
-function loadReports(){
-  const arr = JSON.parse(localStorage.getItem('isharek_reports')||'[]');
-  const el = document.getElementById('reportsList'); el.innerHTML = '';
-  if(arr.length===0){ el.innerHTML = '<p class="muted">لا توجد بلاغات</p>'; return; }
-  arr.slice().reverse().forEach(r=>{
-    const d = document.createElement('div'); d.style.padding='10px'; d.style.marginBottom='8px'; d.style.borderRadius='8px'; d.style.background='#fff';
-    d.innerHTML = `<strong>${r.type}</strong> <small class="muted"> - ${new Date(r.ts).toLocaleString()}</small><div style="margin-top:6px">${r.detail}</div>`;
-    el.appendChild(d);
-  });
-}
-document.getElementById('sendReport').addEventListener('click', ()=>{
-  const type = document.getElementById('rtype').value; const detail = document.getElementById('rdetail').value.trim();
-  if(!detail) return alert('أدخل تفاصيل البلاغ');
-  const arr = JSON.parse(localStorage.getItem('isharek_reports')||'[]');
-  arr.push({type,detail,ts:Date.now()}); localStorage.setItem('isharek_reports', JSON.stringify(arr));
-  alert('تم حفظ البلاغ (محاكاة)');
-  document.getElementById('rdetail').value=''; loadReports();
-});
-loadReports();
-</script>
+</section>
+
 </body>
 </html>
