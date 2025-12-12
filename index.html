@@ -1,124 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>إشعارك — منصة تجريبية</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إشعارك – منصة تجريبية</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="header-left">
-      <button class="circle-btn" aria-label="حسابي" id="profileBtn" title="حسابي">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="8" r="3" stroke="#fff" stroke-width="1.4"/>
-          <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-      </button>
+<header class="topbar">
+    <div class="logo">إشعارك</div>
+    <div class="user-icon">👤</div>
+</header>
+
+<section class="hero-box">
+    <h2>إشعــارك — تنبيهات الحماية</h2>
+    <p>خدمة لحماية المستخدم من الروابط الاحتيالية وسرقة الحسابات.</p>
+    <button class="main-btn" onclick="openAlert()">افتح الإشعار</button>
+    <button class="secondary-btn" onclick="location.href='report.html'">رفع بلاغ</button>
+</section>
+
+<section class="services">
+    <div class="card" onclick="location.href='check.html'">الاستعلامات</div>
+    <div class="card" onclick="location.href='passport.html'">الجوازات</div>
+    <div class="card" onclick="location.href='traffic.html'">خدمات المرور</div>
+    <div class="card" onclick="location.href='appointments.html'">المواعيد</div>
+    <div class="card" onclick="location.href='more.html'">المزيد</div>
+</section>
+
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <h3>التنبيه الأمني</h3>
+        <p>تم اكتشاف رابط مشبوه. هل ترغب بفتح التفاصيل؟</p>
+        <button class="main-btn" onclick="closeAlert()">موافق</button>
     </div>
+</div>
 
-    <div class="brand">
-      <svg class="brand-logo" width="86" height="36" viewBox="0 0 86 36" aria-hidden="true">
-        <defs>
-          <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#0b7a4b"/>
-            <stop offset="1" stop-color="#1aa063"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" width="86" height="36" rx="6" fill="url(#g1)"></rect>
-        <g transform="translate(8,6)" fill="#fff" aria-hidden="true">
-          <rect x="0" y="0" width="6" height="20" rx="3"></rect>
-          <rect x="10" y="0" width="6" height="14" rx="3"></rect>
-          <rect x="20" y="0" width="6" height="8" rx="3"></rect>
-        </g>
-      </svg>
-      <div class="brand-text">أبشر • إشعارك</div>
-    </div>
-
-    <nav class="header-right" aria-label="أدوات">
-      <button id="contrastBtn" class="control-btn" title="تبديل التباين">تباين</button>
-      <button id="zoomIn" class="control-btn" title="تكبير">تكبير</button>
-      <button id="zoomOut" class="control-btn" title="تصغير">تصغير</button>
-    </nav>
-  </header>
-
-  <main class="content" role="main">
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-left">
-        <h1 id="heroTitle">الخدمات الإلكترونية</h1>
-        <p class="sub">اختر الخدمة للوصول إلى وظائف إشعارك التجريبية</p>
-      </div>
-
-      <div class="hero-right" aria-hidden="true">
-        <div class="alert-card" role="region" aria-label="بطاقة إشعار حماية">
-          <div class="shield" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 1l8 4v5c0 5-3 9-8 11-5-2-8-6-8-11V5l8-4z" fill="#0b7a4b"/>
-              <rect x="11" y="6" width="2" height="6" rx="1" fill="#fff"/>
-              <circle cx="12" cy="16" r="1.2" fill="#fff"/>
-            </svg>
-          </div>
-
-          <h3>إشعارك — تنبيهات الحماية</h3>
-          <p class="muted">خدمة لحماية المستخدم من الروابط الاحتيالية وسرقة الحسابات (نسخة عرضية).</p>
-
-          <div class="card-actions" role="toolbar" aria-label="إجراءات البطاقة">
-            <a class="btn primary" href="check.html" role="button">افتح الإشعار</a>
-            <a class="btn ghost" href="report.html" role="button">رفع بلاغ</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid services-grid" aria-label="خدمات">
-      <article class="service-box" tabindex="0" onclick="location.href='check.html'" role="link" aria-label="خدمات المرور">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><path d="M3 13l1-4h16l1 4v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1h-10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-5z" fill="#0b7a4b"/></svg>
-        </div>
-        <div class="label">خدمات المرور</div>
-      </article>
-
-      <article class="service-box" tabindex="0" onclick="location.href='report.html'" role="link" aria-label="الجوازات">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><rect x="3" y="3" width="18" height="18" rx="2" fill="#0b7a4b"/></svg>
-        </div>
-        <div class="label">الجوازات</div>
-      </article>
-
-      <article class="service-box" tabindex="0" onclick="location.href='report.html'" role="link" aria-label="الاستعلامات">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><path d="M10 2a8 8 0 1 0 3.2 15.5L21 22" stroke="#0b7a4b" stroke-width="1.6" fill="none"/></svg>
-        </div>
-        <div class="label">الاستعلامات</div>
-      </article>
-
-      <article class="service-box" tabindex="0" onclick="location.href='check.html'" role="link" aria-label="المواعيد">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><rect x="3" y="4" width="18" height="18" rx="2" fill="#0b7a4b"/></svg>
-        </div>
-        <div class="label">المواعيد</div>
-      </article>
-
-      <article class="service-box" tabindex="0" onclick="location.href='chat.html'" role="link" aria-label="خدماتي">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><circle cx="12" cy="8" r="3" fill="#0b7a4b"/></svg>
-        </div>
-        <div class="label">خدماتي</div>
-      </article>
-
-      <article class="service-box" tabindex="0" onclick="location.href='check.html'" role="link" aria-label="المزيد">
-        <div class="icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="icon-svg"><circle cx="12" cy="12" r="2" fill="#0b7a4b"/><circle cx="6" cy="12" r="2" fill="#0b7a4b"/><circle cx="18" cy="12" r="2" fill="#0b7a4b"/></svg>
-        </div>
-        <div class="label">المزيد</div>
-      </article>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div>إشعارك — نموذج تجريبي قابل للتطوير</div>
-  </footer>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
