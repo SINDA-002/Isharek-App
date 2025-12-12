@@ -38,7 +38,7 @@ function checkURL() {
   let url = document.getElementById("urlInput").value;
   let result = document.getElementById("urlResult");
 
-  if (!url) {
+  if (url) {
     result.innerHTML = "⚠️ الرجاء إدخال الرابط";
     result.style.color = "red";
     return;
