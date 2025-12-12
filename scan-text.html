@@ -1,1 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تحليل نص — إشعارك</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar"><div class="brand"><div class="logo">أبشر</div><div class="title">إشعارك</div></div><nav class="nav"><a href="index.html">الرئيسية</a><a href="ishaarak.html">إشعارك</a><a href="scan-text.html" class="active">تحليل نص</a></nav></aside>
+    <main class="main">
+      <header class="header"><div class="title">تحليل نص الرسالة</div></header>
+      <section class="box">
+        <label>ألصق نص الرسالة هنا</label>
+        <textarea id="text-input" rows="6" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd"></textarea>
+        <div style="margin-top:8px"><button id="analyze" class="tool" style="background:var(--green2);color:#fff;border:0">تحليل</button></div>
+        <div id="text-output" style="margin-top:12px"></div>
+      </section>
+    </main>
+  </div>
 
+  <script>
+    document.getElementById('analyze').addEventListener('click', ()=>{
+      const t = document.getElementById('text-input').value.trim(); const out = document.getElementById('text-output'); if(!t){ out.textContent='أدخل نصًا للتحليل'; return;}
+      const low = t.toLowerCase(); let flags=[];
+      const keywords = ['تحويل','سجل','تأكيد','حساب','مشاهدة','الدفع','رمز','otp','كلمة المرور','سحب'];
+      keywords.forEach(k=>{ if(low.includes(k)) flags.push(k); });
+      const score = Math.min(100, flags.length * 25 + (t.length>120?10:0));
+      const level = score>50?'خطر عالي': score>20?'مشكوك':'آمن';
+      out.innerHTML = `<div style="padding:12px;background:${level==='خطر عالي'?'#ffd7d7':level==='مشكوك'?'#fff6d6':'#e7f9ee'};border-radius:8px"><strong>النتيجة:</strong> ${level}<br>درجة: ${score}<br>${flags.length?'<div>الكلمات المكتشفة: '+flags.join(', ')+'</div>':''}</div>`;
+    });
+  </script>
+</body>
+</html>
