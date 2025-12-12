@@ -77,3 +77,42 @@ body {
     font-weight: bold;
     color: #333;
 }
+
+.btn {
+    display: inline-block;
+    background: #1f7c4d;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #17613b;
+}
+
+.input-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.textarea {
+    width: 90%;
+    height: 160px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+}
