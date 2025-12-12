@@ -1,8 +1,19 @@
 function go(page) {
     window.location.href = page;
 }
+function checkLink(url) {
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    return {
+      valid: false,
+      message: "❌ رابط غير صالح"
+    };
+  }
 
-/* ============================
+  return {
+    valid: true,
+    message: "🔗 تنسيق الرابط صحيح"
+  };
+}/* ============================
      فحص الرابط
 =============================*/
 function checkURL() {
@@ -14,8 +25,12 @@ function checkURL() {
         result.style.color = "red";
         return;
     }
-
-    let suspiciousWords = ["bank", "login", "free", "gift", "verify", "code"];
+let linkCheck = checkLink(url);
+if (!linkCheck.valid) {
+  result.innerHTML = linkCheck.message;
+  result.style.color = "red";
+  return;
+}    let suspiciousWords = ["bank", "login", "free", "gift", "verify", "code"];
 
     let isSuspicious = suspiciousWords.some(w => url.toLowerCase().includes(w));
 
