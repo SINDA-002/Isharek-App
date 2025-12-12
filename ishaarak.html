@@ -1,48 +1,0 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إشعارك — الخدمة</title><link rel="stylesheet" href="style.css"></head>
-<body>
-  <div class="site-shell">
-    <aside class="sidebar" aria-hidden="false">
-      <div class="brand"><div class="logo">أبشر</div><div class="title">منصة الخدمات</div></div>
-      <nav class="nav"><a href="index.html">الرئيسية</a><a class="active" href="ishaarak.html">إشعارك</a><a href="check-link.html">فحص رابط</a><a href="report.html">رفع بلاغ</a></nav>
-      <div style="margin-top:auto;color:#fff;font-size:13px">فريق الابتكار والتطوير</div>
-    </aside>
-
-    <main class="main">
-      <header class="header"><div class="title">إشعارك — لوحة التحكم</div><div class="tools"><button id="btn-contrast" class="tool">تباين</button><button id="btn-zoom" class="tool">تكبير</button></div></header>
-
-      <section class="hero">
-        <div class="shield"><svg width="96" height="110"><use href="#ic-shield"></use></svg></div>
-        <div class="h-text"><h1>نظام الإنذار المبكر</h1><p class="lead">فحص، بلاغ، وتنبيهات للمستخدمين — محاكاة عملية داخل البيئة.</p></div>
-      </section>
-
-      <section class="grid">
-        <div class="card" onclick="location.href='scan-link.html'">
-          <div class="icon"><svg width="38" height="38"><use href="#icon-check"></use></svg></div><h3>فحص رابط</h3><p class="muted">تحليل أولي للرابط قبل الفتح</p>
-        </div>
-
-        <div class="card" onclick="location.href='scan-text.html'">
-          <div class="icon"><svg width="38" height="38"><use href="#icon-text"></use></svg></div><h3>تحليل نص</h3><p class="muted">تحليل نص الرسالة واستخراج كلمات احتيالية</p>
-        </div>
-
-        <div class="card" onclick="location.href='report.html'">
-          <div class="icon"><svg width="38" height="38"><use href="#icon-report"></use></svg></div><h3>رفع بلاغ</h3><p class="muted">تقديم البلاغ للجهة المختصة (محليًا)</p>
-        </div>
-
-        <div class="card" onclick="location.href='report.html#history'">
-          <div class="icon"><svg width="38" height="38"><use href="#icon-log"></use></svg></div><h3>سجل البلاغات</h3><p class="muted">مراقبة البلاغات المسجلة</p>
-        </div>
-      </section>
-
-      <div class="box"><h3>تعليمات سريعة</h3><p class="muted">لا تقم بفتح روابط مشبوهة؛ استخدم زر الفحص أولًا أو ارفع بلاغًا ليتم فحصه لاحقًا.</p></div>
-
-    </main>
-  </div>
-
-  <button class="chat-launch" onclick="openChat()">💬</button>
-  <div class="chat-panel" aria-hidden="true"><div class="chat-header"><strong>مساعد إشعارك</strong><button id="chat-close">✕</button></div><div class="chat-log" id="chat-log"></div><form id="chat-form" class="chat-form"><input id="chat-input" placeholder="ألصق الرابط أو اكتب سؤالك..." /><div style="display:flex;gap:8px"><button type="submit">إرسال</button></div></form></div>
-
-  <script src="app.js"></script>
-</body>
-</html>
