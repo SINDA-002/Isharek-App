@@ -2,33 +2,26 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فحص رابط | إشعارك</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="header">
-    <div class="menu-icon">☰</div>
-    <div class="logo"><img src="shield.png" class="shield"> إشعارك</div>
-    <div class="profile-icon">👤</div>
+    <div class="menu-icon" onclick="go('index.html')">←</div>
+    <div class="logo"><img src="icons/shield.svg" class="shield"> فحص رابط</div>
+    <div></div>
 </header>
 
-<section class="main">
+<div class="card">
+    <label>أدخل الرابط للفحص:</label>
+    <input id="urlInput" class="input">
 
-    <h2 class="title">فحص رابط</h2>
-    <p class="subtitle">أدخل أي رابط ليتم تحليله بواسطة الذكاء الاصطناعي</p>
+    <button class="btn" onclick="checkURL()">فحص الرابط</button>
 
-    <div class="input-card">
-        <input type="text" placeholder="أدخل الرابط هنا…" class="input">
-        <button class="btn">فحص</button>
-    </div>
+    <p id="urlResult" style="margin-top:15px; font-size:18px;"></p>
+</div>
 
-    <br><br>
-    <a href="index.html" class="btn">العودة إلى إشعارك</a>
-
-</section>
-
+<script src="app.js"></script>
 </body>
 </html>
