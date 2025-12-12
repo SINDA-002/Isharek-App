@@ -34,33 +34,22 @@ function checkLink(url) {
 }/* ============================
      فحص الرابط
 =============================*/
-function checkURL() {
-  let url = document.getElementById("urlInput").value;
-  let result = document.getElementById("urlResult");
+et linkCheck = checkLink(url);
+if (!linkCheck.valid) {
+  result.innerHTML = linkCheck.message;
+  result.style.color = "red";
+  return;
+}
 
-  if (url) {
-    result.innerHTML = "⚠️ الرجاء إدخال الرابط";
-    result.style.color = "red";
-    return;
-  }
+let suspiciousWords = ["bank", "login", "free", "gift", "verify", "code"];
+let isSuspicious = suspiciousWords.some(w => url.toLowerCase().includes(w));
 
-  let linkCheck = checkLink(url);
-  if (!linkCheck.valid) {
-    result.innerHTML = linkCheck.message;
-    result.style.color = "red";
-    return;
-  }
-
-  let suspiciousWords = ["bank", "login", "free", "gift", "verify", "code"];
-  let isSuspicious = suspiciousWords.some(w => url.toLowerCase().includes(w));
-
-  if (isSuspicious) {
-    result.innerHTML = "⛔ الرابط غير آمن - قد يكون احتيالي!";
-    result.style.color = "red";
-  } else {
-    result.innerHTML = "✅ الرابط يبدو آمنًا حسب الفحص المبدئي";
-    result.style.color = "green";
-  }
+if (isSuspicious) {
+  result.innerHTML = "⛔ الرابط غير آمن - قد يكون احتيالي!";
+  result.style.color = "red";
+} else {
+  result.innerHTML = "✅ الرابط يبدو آمنًا حسب الفحص المبدئي";
+  result.style.color = "green";
 }
 
 /* ============================
