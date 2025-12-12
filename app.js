@@ -2,11 +2,29 @@ function go(page) {
     window.location.href = page;
 }
 function checkLink(url) {
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+  try {
+    const u = new URL(url);
+
+    // نرفض أي رابط مو HTTPS
+    if (u.protocol !== "https:") {
+      return {
+        valid: false,
+        message: "⚠️ الرابط غير آمن لأنه لا يستخدم HTTPS"
+      };
+    }
+
+    return {
+      valid: true,
+      message: "🔒 الرابط يستخدم HTTPS (آمن مبدئيًا)"
+    };
+
+  } catch (e) {
     return {
       valid: false,
       message: "❌ رابط غير صالح"
     };
+  }
+}
   }
 
   return {
