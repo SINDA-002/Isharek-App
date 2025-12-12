@@ -1,34 +1,62 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>رفع بلاغ — إشعارك</title><link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>رفع بلاغ — إشعارك</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <div class="site-shell">
-    <aside class="sidebar"><div class="brand"><div class="logo">أبشر</div><div class="title">إشعارك</div></div><nav class="nav"><a href="index.html">الرئيسية</a><a href="ishaarak.html">إشعارك</a><a href="report.html" class="active">رفع بلاغ</a></nav></aside>
-    <main class="main">
-      <header class="header"><div class="title">رفع بلاغ</div></header>
-      <section class="box">
-        <form id="rep-form">
-          <label>نوع البلاغ</label>
-          <select id="rtype"><option>رابط/موقع</option><option>رسالة نصية</option><option>مكالمة</option><option>سرقة حساب</option></select>
-          <label style="margin-top:8px">التفاصيل</label>
-          <textarea id="rdetail" rows="4" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ddd"></textarea>
-          <label style="margin-top:8px">معلومات للتواصل (اختياري)</label>
-          <input id="rcontact" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ddd">
-          <div style="margin-top:10px"><button type="submit" class="tool" style="background:var(--green2);color:#fff;border:0">إرسال البلاغ</button></div>
-        </form>
-      </section>
+  <header class="site-header" style="justify-content:space-between">
+    <a href="index.html" class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,0.28)">العودة</a>
+    <div class="brand-text" style="color:#fff">رفع بلاغ</div>
+    <div></div>
+  </header>
 
-      <section class="box" style="margin-top:12px">
-        <h3>سجل البلاغات (محلي)</h3>
-        <div id="reports"></div>
-      </section>
-    </main>
-  </div>
+  <main class="content" style="max-width:760px">
+    <section style="margin-top:18px">
+      <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:var(--shadow)">
+        <h2>رفع بلاغ عن رسالة/مكالمة مشبوهة</h2>
+        <p class="muted">أدخل المعلومات لعرض مثالي أمام اللجنة — هذا نموذج لا يرسل بيانات حقيقية.</p>
+
+        <label class="muted" style="display:block;margin-top:10px">نوع البلاغ</label>
+        <select id="type" aria-label="نوع البلاغ" style="width:100%;padding:10px;border-radius:8px">
+          <option>رسالة نصية مشبوهة</option>
+          <option>مكالمة تهديد</option>
+          <option>رابط مشبوه</option>
+          <option>حساب ينتحل جهة حكومية</option>
+        </select>
+
+        <label class="muted" style="display:block;margin-top:10px">تفاصيل</label>
+        <textarea id="desc" placeholder="أدخل وصفاً للمشكلة..." aria-label="تفاصيل البلاغ" style="width:100%;min-height:120px;padding:10px;border-radius:8px"></textarea>
+
+        <div style="text-align:left;margin-top:12px">
+          <button id="submit" class="btn primary">إرسال بلاغ (محاكاة)</button>
+        </div>
+
+        <div id="rv" style="display:none;margin-top:12px;padding:10px;border-radius:8px;background:#eefaf1;border:1px solid #b9edc9"></div>
+      </div>
+    </section>
+  </main>
 
 <script>
-  function load(){ const arr = JSON.parse(localStorage.getItem('isharek_reports')||'[]'); const el = document.getElementById('reports'); if(!arr.length){ el.innerHTML='<p>لا توجد بلاغات</p>'; return; } el.innerHTML=''; arr.slice().reverse().forEach(r=>{ const d=document.createElement('div'); d.style.background='#fff'; d.style.padding='10px'; d.style.marginBottom='8px'; d.style.borderRadius='8px'; d.innerHTML = `<strong>${r.type}</strong> <small style="color:#666"> - ${new Date(r.ts).toLocaleString()}</small><p style="margin:8px 0">${r.detail}</p><div style="color:#666">${r.contact||''}</div>`; el.appendChild(d); }); }
-  document.getElementById('rep-form').addEventListener('submit',(e)=>{ e.preventDefault(); const t=document.getElementById('rtype').value; const d=document.getElementById('rdetail').value.trim(); const c=document.getElementById('rcontact').value.trim(); if(!d) return alert('أدخل التفاصيل'); const arr=JSON.parse(localStorage.getItem('isharek_reports')||'[]'); arr.push({type:t,detail:d,contact:c,ts:Date.now()}); localStorage.setItem('isharek_reports', JSON.stringify(arr)); alert('تم حفظ البلاغ محليًا'); load(); document.getElementById('rep-form').reset(); });
-  load();
+  (function(){
+    const submit = document.getElementById('submit');
+    const rv = document.getElementById('rv');
+
+    submit.addEventListener('click', ()=>{
+      const t = document.getElementById('type').value;
+      const d = document.getElementById('desc').value || '(وصف افتراضي)';
+      const id = Math.floor(Math.random() * 900000) + 100000;
+      rv.style.display = 'block';
+      rv.innerHTML = '<strong>تم إنشاء البلاغ رقم: '+id+'</strong><div class="muted">نوع البلاغ: '+escapeHtml(t)+'<br>الوصف: '+escapeHtml(d)+'</div><p style="margin-top:8px">ملاحظة: هذا نموذج تجريبي فقط.</p>';
+    });
+
+    // تجنب حقن HTML عرضي في النصوص (بسيط)
+    function escapeHtml(text){
+      return text.replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]; });
+    }
+  })();
 </script>
 </body>
 </html>
