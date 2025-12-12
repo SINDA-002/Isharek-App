@@ -5,61 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إشعارك</title>
     <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 
 <body>
 
-    <!-- الهيدر الأخضر -->
-    <header class="header">
-        <div class="menu-icon">☰</div>
-        <div class="logo">
-            <img src="shield.png" class="shield"> إشعارك
+<header class="header">
+    <div class="menu-icon">☰</div>
+
+    <div class="logo">
+        <img src="icons/shield.svg" class="shield">
+        إشعارك
+    </div>
+
+    <div class="profile-icon">👤</div>
+</header>
+
+<section class="main">
+
+    <h2 class="title">إشعارك — نظام الإنذار المبكر ضد الاحتيال</h2>
+    <p class="subtitle">
+        خدمة تساعدك على التحقق من الروابط والرسائل المشبوهة وإصدار تنبيهات قبل وقوع الاحتيال.
+    </p>
+
+    <div class="grid">
+
+        <div class="box" onclick="go('report.html')">
+            <img src="icons/warning.svg" class="icon-img">
+            <p>رفع بلاغ</p>
         </div>
-        <div class="profile-icon">👤</div>
-    </header>
 
-    <!-- المحتوى الرئيسي -->
-    <section class="main">
-        <h2 class="title">إشعارك — نظام الإنذار المبكر ضد الاحتيال</h2>
-        <p class="subtitle">
-            خدمة تساعدك على التحقق من الروابط والرسائل المشبوهة وإصدار تنبيهات قبل وقوع الاحتيال.
-        </p>
-
-        <!-- المربعات -->
-        <div class="grid">
-
-            <div class="box">
-                <div class="icon">⚠️</div>
-                <p>رفع بلاغ</p>
-            </div>
-
-            <div class="box">
-                <div class="icon">✔️</div>
-                <p>فحص رابط</p>
-            </div>
-
-            <div class="box">
-                <div class="icon">🤖</div>
-                <p>التحليل الذكي</p>
-            </div>
-
-            <div class="box">
-                <div class="icon">🔔</div>
-                <p>تنبيهات الاحتيال</p>
-            </div>
-
-            <div class="box">
-                <div class="icon">📄</div>
-                <p>سجل البلاغات</p>
-            </div>
-
-            <div class="box">
-                <div class="icon">⚙️</div>
-                <p>إدارة الإشعارات</p>
-            </div>
-
+        <div class="box" onclick="go('check.html')">
+            <img src="icons/check.svg" class="icon-img">
+            <p>فحص رابط</p>
         </div>
-    </section>
+
+        <div class="box" onclick="go('ai.html')">
+            <img src="icons/robot.svg" class="icon-img">
+            <p>التحليل الذكي</p>
+        </div>
+
+        <div class="box" onclick="go('alerts.html')">
+            <img src="icons/bell.svg" class="icon-img">
+            <p>تنبيهات الاحتيال</p>
+        </div>
+
+        <div class="box" onclick="go('history.html')">
+            <img src="icons/file.svg" class="icon-img">
+            <p>سجل البلاغات</p>
+        </div>
+
+        <div class="box" onclick="go('settings.html')">
+            <img src="icons/settings.svg" class="icon-img">
+            <p>إدارة الإشعارات</p>
+        </div>
+
+    </div>
+
+</section>
 
 </body>
 </html>
