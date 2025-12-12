@@ -1,41 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إشعارك – منصة تجريبية</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>أبشر — إشعارك (محاكاة)</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<header class="topbar">
-    <div class="logo">إشعارك</div>
-    <div class="user-icon">👤</div>
-</header>
-
-<section class="hero-box">
-    <h2>إشعــارك — تنبيهات الحماية</h2>
-    <p>خدمة لحماية المستخدم من الروابط الاحتيالية وسرقة الحسابات.</p>
-    <button class="main-btn" onclick="openAlert()">افتح الإشعار</button>
-    <button class="secondary-btn" onclick="location.href='report.html'">رفع بلاغ</button>
-</section>
-
-<section class="services">
-    <div class="card" onclick="location.href='check.html'">الاستعلامات</div>
-    <div class="card" onclick="location.href='passport.html'">الجوازات</div>
-    <div class="card" onclick="location.href='traffic.html'">خدمات المرور</div>
-    <div class="card" onclick="location.href='appointments.html'">المواعيد</div>
-    <div class="card" onclick="location.href='more.html'">المزيد</div>
-</section>
-
-<div id="popup" class="popup">
-    <div class="popup-box">
-        <h3>التنبيه الأمني</h3>
-        <p>تم اكتشاف رابط مشبوه. هل ترغب بفتح التفاصيل؟</p>
-        <button class="main-btn" onclick="closeAlert()">موافق</button>
+  <!-- HEADER مشابه لأبشر -->
+  <header class="topbar" role="banner">
+    <div class="topbar-left">
+      <!-- شعار أبشر-ستايل (رسومي وليس شعار رسمي) -->
+      <div class="absher-mark" aria-hidden="true">
+        <div class="absher-bars"><span></span><span></span><span></span></div>
+      </div>
+      <div class="site-name">منصة الخدمات الإلكترونية</div>
     </div>
-</div>
 
-<script src="app.js"></script>
+    <div class="topbar-right">
+      <!-- شعار إشعارك (درع أخضر بعلامة تنبيه) -->
+      <div class="ishaarek-logo" aria-label="إشعارك">
+        <svg viewBox="0 0 100 120" width="46" height="56" role="img" aria-hidden="false">
+          <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2e8a4c"/><stop offset="1" stop-color="#0f6848"/></linearGradient></defs>
+          <path d="M50 5 L85 22 L85 68 C85 95 62 113 50 118 C38 113 15 95 15 68 L15 22 Z" fill="url(#g)"/>
+          <circle cx="50" cy="48" r="9" fill="#fff"></circle>
+          <text x="50" y="53" font-size="14" text-anchor="middle" fill="#0f6848" font-weight="700">!</text>
+        </svg>
+      </div>
+      <div class="service-title">إشعارك</div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="page">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>إشعارك — نظام الإنذار المبكر</h1>
+        <p class="muted">نموذج تفاعلي داخل بيئة شبيهة بأبشر لفحص الروابط ورفع البلاغات وتنبيهات الحماية.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="ishaarak.html">افتح خدمة إشعارك</a>
+          <a class="btn ghost" href="report.html">رفع بلاغ</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="card highlight">
+          <h3>تنبيه أمني</h3>
+          <p>تم رصد نشاط احتيالي قد يؤثر على حسابات المستخدمين — جرّب فحص رابط الآن.</p>
+          <a class="btn small" href="check.html">فحص رابط</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-grid" aria-label="خدمات">
+      <a class="service" href="ishaarak.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-shield"></use></svg>
+        <div>إشعارك</div>
+      </a>
+
+      <a class="service" href="check.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-check"></use></svg>
+        <div>فحص رابط</div>
+      </a>
+
+      <a class="service" href="report.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-report"></use></svg>
+        <div>رفع بلاغ</div>
+      </a>
+
+      <a class="service" href="ishaarak.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-text"></use></svg>
+        <div>تحليل نصي</div>
+      </a>
+
+      <a class="service" href="ishaarak.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#ic-log"></use></svg>
+        <div>سجل البلاغات</div>
+      </a>
+
+      <a class="service" href="ishaarak.html">
+        <svg class="svc-ico" viewBox="0 0 24 24"><use href="icons.svg#icon-calendar"></use></svg>
+        <div>المواعيد</div>
+      </a>
+    </section>
+
+    <footer class="footer">
+      <div>فريق الابتكار والتطوير — نموذج تجريبي</div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
