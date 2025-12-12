@@ -1,13 +1,14 @@
 body {
     margin: 0;
-    font-family: "Tahoma", sans-serif;
+    font-family: "Tajawal", "Tahoma", sans-serif;
     background: #f5f5f5;
 }
 
+/* الهيدر */
 .header {
-    background: #1f7c4d;
+    background: #0d6b38;
     color: white;
-    padding: 15px;
+    padding: 15px 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,17 +18,18 @@ body {
 .menu-icon, .profile-icon { cursor: pointer; }
 
 .logo {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 .shield {
-    width: 30px;
-    margin-left: 8px;
+    width: 32px;
 }
 
+/* الرئيسية */
 .main {
     padding: 25px;
     text-align: center;
@@ -36,15 +38,17 @@ body {
 .title {
     font-size: 26px;
     margin-bottom: 10px;
-    color: #1f7c4d;
+    color: #0d6b38;
+    font-weight: bold;
 }
 
 .subtitle {
-    font-size: 17px;
+    font-size: 16px;
     color: #555;
     margin-bottom: 30px;
 }
 
+/* الشبكة */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -54,21 +58,22 @@ body {
 .box {
     background: white;
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     transition: 0.2s;
     cursor: pointer;
+    text-align: center;
 }
 
 .box:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
 }
 
-.icon {
-    font-size: 42px;
-    margin-bottom: 10px;
-    color: #1f7c4d;
+.icon-img {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
 }
 
 .box p {
@@ -78,41 +83,33 @@ body {
     color: #333;
 }
 
-.btn {
-    display: inline-block;
-    background: #1f7c4d;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 17px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    background: #17613b;
-}
-
-.input-card {
+/* نماذج الإدخال */
+.card {
     background: white;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    margin: 20px;
 }
 
-.input {
-    width: 90%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-.textarea {
-    width: 90%;
-    height: 160px;
-    padding: 15px;
+.input, .textarea {
+    width: 100%;
+    padding: 14px;
     border-radius: 12px;
     border: 1px solid #ccc;
-    font-size: 17px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    background: #0d6b38;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 18px;
+    font-size: 18px;
+    cursor: pointer;
 }
